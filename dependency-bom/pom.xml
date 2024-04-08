@@ -25,6 +25,8 @@
         <postgresql.version>42.7.3</postgresql.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <openapi-webmvc.version>2.2.0</openapi-webmvc.version>
+        <openapi-ui.version>1.8.0</openapi-ui.version>
+        <openapi-generator.version>7.4.0</openapi-generator.version>
         <jjwt.version>0.9.1</jjwt.version>
         <jaxb.version>2.3.1</jaxb.version>
         <jackson.version>2.16.0</jackson.version>
@@ -92,6 +94,17 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${openapi-webmvc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${openapi-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

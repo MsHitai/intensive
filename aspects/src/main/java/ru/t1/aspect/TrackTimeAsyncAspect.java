@@ -9,11 +9,21 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 
+/**
+ * Аспект для асинхронного отслеживания времени выполнения методов
+ */
 @Aspect
 @Component
 @Slf4j
 public class TrackTimeAsyncAspect {
 
+    /**
+     * Метод для асинхронного отслеживания времени выполнения методов
+     *
+     * @param joinPoint {@link ProceedingJoinPoint}
+     * @return {@link Object}
+     * @throws Throwable {@link Throwable} исключение
+     */
     @Around("@annotation(TrackTimeAsync)")
     public Object trackTimeAsync(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
