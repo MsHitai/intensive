@@ -1,0 +1,69 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: AI Service
+  description: This is the AI API
+  contact: {"email": "test@test.com"}
+servers:
+  - url: 'https://trush.ai'
+tags:
+  - name: AI
+  - name: Bookmarks
+
+paths:
+  /bookmarks:
+    get:
+      summary: Get all bookmarks
+      operationId: getBookmarks
+      tags:
+        - Bookmarks
+      responses:
+        '200':
+          description: Bookmarks found
+        '400':
+          $ref: '#/components/schemas/ApiError'
+        '500':
+          $ref: '#/components/schemas/ApiError'
+
+components:
+  schemas:
+    ApiError:
+      description: An unexpected error occurred
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          description: HTTP status code
+        message:
+          type: string
+          description: Error message
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of error
+
+    BookmarkDto:
+      type: object
+      description: A bookmark
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The unique identifier of the bookmark
+        url:
+          type: string
+          description: The URL of the bookmark
+        category:
+          $ref: '#/components/schemas/BookmarkCategory'
+
+    BookmarkCategory:
+      type: object
+      description: A bookmark category
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The unique identifier of the category
+        name:
+          type: string
+          description: The name of the Bookmark Category

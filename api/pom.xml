@@ -11,10 +11,11 @@
     </parent>
 
     <artifactId>api</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -31,6 +32,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -46,7 +52,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>
-                                ${project.basedir}/src/main/resources/task-service.yml
+                                ${project.basedir}/src/main/resources/main-service.yml
                             </inputSpec>
                             <generatorName>spring</generatorName>
                             <apiPackage>ru.t1</apiPackage>
@@ -56,6 +62,11 @@
                             </supportingFilesToGenerate>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
+                                <interfaceOnly>false</interfaceOnly>
+                                <java8>true</java8>
+                                <throwsException>true</throwsException>
+                                <useTags>true</useTags>
+                                <useBeanValidation>true</useBeanValidation>
                             </configOptions>
                         </configuration>
                     </execution>
